@@ -34,7 +34,6 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				print_char('%');
 				print_char(*format);
 				count++;
 			}
