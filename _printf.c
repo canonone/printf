@@ -9,44 +9,25 @@
 
 int _printf(const char *format, ...)
 {
+	int size;
+
 	va_list args;
-	int count = 0;
 
 	if (format == NULL)
 		return (-1);
 
+	size = str_len(format);
+
+	if (size <= 0)
+		return (0);
+
 	va_start(args, format);
 
-	while (*format != '\0')
-	{
-		if (*format == '%' && *(format + 1) != '\0')
-		{
-			format++;
-			if (*format == 'c')
-			{
-				char c = va_arg(args, int);
+	size = handle(format, args);
 
-				count += print_char(c);
-			}
-			else if (*format == 's')
-			{
-				const char *str = va_arg(args, char *);
+	_putchar(-1);
 
-				count += print_string(str);
-			}
-			else
-			{
-				print_char(*format);
-				count++;
-			}
-		}
-		else
-		{
-			print_char(*format);
-			count++;
-		}
-		format++;
-	}
 	va_end(args);
-	return (count);
+
+	return (size);
 }

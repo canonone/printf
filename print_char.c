@@ -2,15 +2,18 @@
 
 /**
  * print_char - sends a character to the std output.
- * @c: holds a character.
+ * @list: variable arguments list.
  * Return: returns the length of the character.
  */
 
-int print_char(char c)
+int print_char(va_list list)
 {
-	int num = 1;
+	int temp;
 
-	write(1, &c, 1);
-	return (num);
+	temp = va_arg(list, int);
+
+	_putchar(temp);
+
+	return (1);
 
 }

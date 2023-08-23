@@ -2,13 +2,17 @@
 
 /**
  * print_string - sends a string to std output for case of %s.
- * @str: a pointer to a string.
+ * @list: variable argument list.
  * Return: returns the length of the string.
  */
 
-int print_string(const char *str)
+int print_string(va_list list)
 {
-	write(1, str, str_len(str));
-	return (str_len(str));
+	char *str;
+	int str_len;
 
+	str = va_arg(list, char*);
+	str_len = display((str != NULL) ? str : "(null)");
+
+	return (str_len);
 }
