@@ -47,7 +47,7 @@ int rot13(char *);
 
 typedef struct _format
 {
-	char type;
+	char spec;
 	int (*f)(va_list);
 
 } format;

@@ -67,7 +67,7 @@ int handle_percent(const char *str, va_list list, int *i)
 	amount_formats = sizeof(formats) / sizeof(formats[0]);
 	for (size = j = 0; j < amount_formats; j++)
 	{
-		if (str[*i] == formats[j].type)
+		if (str[*i] == formats[j].spec)
 		{
 			size = formats[j].f(list);
 			return (size);
